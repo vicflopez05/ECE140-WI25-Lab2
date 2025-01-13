@@ -4,7 +4,6 @@ Run the command below to build the docker image:
 
 ```
 docker build -t fastapi-app .
-
 ```
 
 Then, run the command below to start the server:
