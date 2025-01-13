@@ -1,11 +1,15 @@
-from typing import Optional
-
-import uvicorn
-from fastapi import FastAPI, HTTPException, Path, Query
+from typing import Optional, List
+from fastapi import FastAPI, HTTPException, Path, Query, Request, Form
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+import uvicorn
 
 # Initialize FastAPI app
 app = FastAPI()
+
+# Initialize Jinja2 templates
+templates = Jinja2Templates(directory="templates")
 
 # --- Pydantic Models for Request/Response ---
 class Item(BaseModel):
@@ -20,9 +24,14 @@ class User(BaseModel):
 
 # --- Basic Routes ---
 @app.get("/")
-async def root():
-    """Basic GET endpoint returning a welcome message"""
-    return {"message": "Welcome to FastAPI! ECE140"}
+async def root(request: Request):
+    """Serve the index.html template"""
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/customize")
+async def customize(request: Request):
+    """Serve the customize.html template"""
+    return templates.TemplateResponse("customize.html", {"request": request})
 
 @app.get("/hello/{name}")
 async def say_hello(name: str):
@@ -58,6 +67,27 @@ async def read_item(
     if item_id == 42:
         raise HTTPException(status_code=404, detail="Item not found")
     return {"item_id": item_id, "q": q}
+
+# --- Form Handling ---
+@app.post("/submit")
+async def handle_form(
+    name: str = Form(...),
+    email: str = Form(...),
+    message: str = Form(...),
+    color: str = Form(...),
+    interests: List[str] = Form(default=[])
+):
+    """Handle the form submission from index.html"""
+    return {
+        "status": "success",
+        "data": {
+            "name": name,
+            "email": email,
+            "message": message,
+            "favorite_color": color,
+            "interests": interests
+        }
+    }
 
 # Run the server
 if __name__ == "__main__":

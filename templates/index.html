@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Demo - ECE 140A</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to HTML Demo</h1>
+        <h2>ECE 140A - Web Development</h2>
+    </header>
+
+    <nav>
+        <h3>Navigation Example:</h3>
+        <ul>
+            <li><a href="#text-section">Text Elements</a></li>
+            <li><a href="#list-section">Lists</a></li>
+            <li><a href="#table-section">Table</a></li>
+            <li><a href="#form-section">Form</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="text-section">
+            <h2>Text Elements</h2>
+            <p>This is a regular paragraph. You can make text <strong>bold</strong> or <em>italic</em>.</p>
+            <p>You can also use <mark>highlighted text</mark> and create <a href="https://ucsd.edu">links</a>.</p>
+        </section>
+
+        <section id="list-section">
+            <h2>Different Types of Lists</h2>
+            
+            <h3>Ordered List:</h3>
+            <ol>
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+            </ol>
+
+            <h3>Unordered List:</h3>
+            <ul>
+                <li>Apple</li>
+                <li>Banana</li>
+                <li>Orange</li>
+            </ul>
+        </section>
+
+        <section id="table-section">
+            <h2>Table Example</h2>
+            <table border="1">
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                </tr>
+                <tr>
+                    <td>Row 1, Cell 1</td>
+                    <td>Row 1, Cell 2</td>
+                    <td>Row 1, Cell 3</td>
+                </tr>
+                <tr>
+                    <td>Row 2, Cell 1</td>
+                    <td>Row 2, Cell 2</td>
+                    <td>Row 2, Cell 3</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="form-section">
+            <h2>Form Elements</h2>
+            <form action="/submit" method="POST">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <br>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <br>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <br>
+                <div>
+                    <label>Favorite Color:</label>
+                    <input type="radio" name="color" value="red"> Red
+                    <input type="radio" name="color" value="blue"> Blue
+                    <input type="radio" name="color" value="green"> Green
+                </div>
+                <br>
+                <div>
+                    <label>Interests:</label>
+                    <input type="checkbox" name="interests" value="coding"> Coding
+                    <input type="checkbox" name="interests" value="design"> Design
+                    <input type="checkbox" name="interests" value="robotics"> Robotics
+                </div>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created for ECE 140A - Winter 2025</p>
+    </footer>
+</body>
+</html> 
